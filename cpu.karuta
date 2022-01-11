@@ -1,0 +1,43 @@
+// input port_input int[4]
+// input port_ready bool[4]
+
+
+
+// the ops memory
+shared ops #16[16]
+// the program counter
+reg pc #4 = 0
+
+
+reg acc #8 = 0
+reg bak #8 = 0
+
+process main() {
+
+    var op #16 = ops[pc]
+
+    var source #3 = op[0:2]
+    var operation #3 = op[3:5]
+    var output_dest #3 = op[6:8]
+    var flow #1 = op[9:9]
+    var jump #4 = op[10:13]
+
+    var src_value #8 = 0
+
+    if (source == 1 ) {
+        src_value = 1
+    }
+    if (source == 2 ) {
+        src_value = acc
+    }
+    if ( source == 3) {
+        src_value = bak
+    }
+
+
+    print(op)
+
+
+    // next_pc = pc + 1
+    // print(next_pc)
+}

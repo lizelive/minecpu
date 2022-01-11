@@ -1,0 +1,444 @@
+$date
+	Wed Nov  4 20:02:50 2015
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 32 ! out [31:0] $end
+$var reg 1 " clk $end
+$var reg 1 # done $end
+$var reg 1 $ reset $end
+$scope module pam $end
+$var wire 1 % clk $end
+$var wire 32 & data [31:0] $end
+$var wire 32 ' data_2 [31:0] $end
+$var wire 30 ( index [31:2] $end
+$var wire 32 ) next_data [31:0] $end
+$var wire 30 * next_index [31:2] $end
+$var wire 32 + out [31:0] $end
+$var wire 1 , reset $end
+$scope module Counter $end
+$var wire 1 % clk $end
+$var wire 30 - d [29:0] $end
+$var wire 1 . enable $end
+$var wire 1 , reset $end
+$var reg 30 / q [29:0] $end
+$upscope $end
+$scope module Adder $end
+$var wire 30 0 in1 [29:0] $end
+$var wire 30 1 in2 [29:0] $end
+$var wire 30 2 out [29:0] $end
+$upscope $end
+$scope module rom $end
+$var wire 30 3 addr [29:0] $end
+$var wire 32 4 data [31:0] $end
+$var reg 32 5 i [31:0] $end
+$upscope $end
+$scope module alu $end
+$var wire 3 6 control [2:0] $end
+$var wire 32 7 inA [31:0] $end
+$var wire 32 8 inB [31:0] $end
+$var wire 32 9 out [31:0] $end
+$var wire 1 : zero $end
+$upscope $end
+$scope module RT $end
+$var wire 1 % clk $end
+$var wire 32 ; d [31:0] $end
+$var wire 1 < enable $end
+$var wire 1 , reset $end
+$var reg 32 = q [31:0] $end
+$upscope $end
+$scope module Register $end
+$var wire 1 % clk $end
+$var wire 32 > d [31:0] $end
+$var wire 1 ? enable $end
+$var wire 1 , reset $end
+$var reg 32 @ q [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx @
+1?
+bx >
+bx =
+1<
+bx ;
+x:
+bx 9
+bx 8
+bx 7
+b0 6
+b100000000 5
+bx 4
+bx 3
+bx 2
+b1 1
+bx 0
+bx /
+1.
+bx -
+1,
+bx +
+bx *
+bx )
+bx (
+bx '
+bx &
+0%
+1$
+0#
+0"
+bx !
+$end
+#2
+b0 /
+b0 (
+b0 0
+b0 3
+b0 =
+b0x '
+b0 @
+b0 !
+b0 +
+b0 7
+1"
+1%
+#4
+b1 &
+b1 4
+b1 8
+b1 ;
+b1 *
+b1 -
+b1 2
+0"
+0%
+#5
+0:
+b0 '
+#6
+b1 )
+b1 9
+b1 >
+1"
+1%
+#8
+0"
+0%
+#10
+1"
+1%
+#12
+0"
+0%
+#13
+0$
+0,
+#14
+b1 @
+b1 !
+b1 +
+b1 7
+b1 =
+b0x '
+b1 /
+b1 (
+b1 0
+b1 3
+1"
+1%
+#15
+1:
+b1 '
+#16
+b10 )
+b10 9
+b10 >
+b10 &
+b10 4
+b10 8
+b10 ;
+b10 *
+b10 -
+b10 2
+0"
+0%
+#17
+0:
+b0x '
+#18
+b10 /
+b10 (
+b10 0
+b10 3
+b10 =
+b0x0 '
+b11 @
+b11 !
+b11 +
+b11 7
+b11 )
+b11 9
+b11 >
+1"
+1%
+#20
+b101 )
+b101 9
+b101 >
+b100 &
+b100 4
+b100 8
+b100 ;
+b11 *
+b11 -
+b11 2
+0"
+0%
+#22
+b111 @
+b111 !
+b111 +
+b111 7
+b100 =
+b0x00 '
+b11 /
+b11 (
+b11 0
+b11 3
+b111 )
+b111 9
+b111 >
+1"
+1%
+#24
+b1011 )
+b1011 9
+b1011 >
+b1000 &
+b1000 4
+b1000 8
+b1000 ;
+b100 *
+b100 -
+b100 2
+0"
+0%
+#26
+b100 /
+b100 (
+b100 0
+b100 3
+b1000 =
+b0x000 '
+b1111 @
+b1111 !
+b1111 +
+b1111 7
+b1111 )
+b1111 9
+b1111 >
+1"
+1%
+#28
+b10111 )
+b10111 9
+b10111 >
+b10000 &
+b10000 4
+b10000 8
+b10000 ;
+b101 *
+b101 -
+b101 2
+0"
+0%
+#30
+b11111 @
+b11111 !
+b11111 +
+b11111 7
+b10000 =
+b0x0000 '
+b101 /
+b101 (
+b101 0
+b101 3
+b11111 )
+b11111 9
+b11111 >
+1"
+1%
+#32
+b101111 )
+b101111 9
+b101111 >
+b100000 &
+b100000 4
+b100000 8
+b100000 ;
+b110 *
+b110 -
+b110 2
+0"
+0%
+#34
+b110 /
+b110 (
+b110 0
+b110 3
+b100000 =
+b0x00000 '
+b111111 @
+b111111 !
+b111111 +
+b111111 7
+b111111 )
+b111111 9
+b111111 >
+1"
+1%
+#36
+b1011111 )
+b1011111 9
+b1011111 >
+b1000000 &
+b1000000 4
+b1000000 8
+b1000000 ;
+b111 *
+b111 -
+b111 2
+0"
+0%
+#38
+b1111111 @
+b1111111 !
+b1111111 +
+b1111111 7
+b1000000 =
+b0x000000 '
+b111 /
+b111 (
+b111 0
+b111 3
+b1111111 )
+b1111111 9
+b1111111 >
+1"
+1%
+#40
+b10111111 )
+b10111111 9
+b10111111 >
+b10000000 &
+b10000000 4
+b10000000 8
+b10000000 ;
+b1000 *
+b1000 -
+b1000 2
+0"
+0%
+#42
+b1000 /
+b1000 (
+b1000 0
+b1000 3
+b10000000 =
+b0x0000000 '
+b11111111 @
+b11111111 !
+b11111111 +
+b11111111 7
+b11111111 )
+b11111111 9
+b11111111 >
+1"
+1%
+#44
+b101111111 )
+b101111111 9
+b101111111 >
+b0 &
+b0 4
+b0 8
+b0 ;
+b1001 *
+b1001 -
+b1001 2
+0"
+0%
+#46
+b0 =
+b0 '
+b1001 /
+b1001 (
+b1001 0
+b1001 3
+b11111111 )
+b11111111 9
+b11111111 >
+1"
+1%
+#48
+b1010 *
+b1010 -
+b1010 2
+0"
+0%
+#50
+b1010 /
+b1010 (
+b1010 0
+b1010 3
+1"
+1%
+#52
+b1011 *
+b1011 -
+b1011 2
+0"
+0%
+#54
+b1011 /
+b1011 (
+b1011 0
+b1011 3
+1"
+1%
+#56
+b1100 *
+b1100 -
+b1100 2
+0"
+0%
+#58
+b1100 /
+b1100 (
+b1100 0
+b1100 3
+1"
+1%
+#60
+b1101 *
+b1101 -
+b1101 2
+0"
+0%
+#62
+b1101 /
+b1101 (
+b1101 0
+b1101 3
+1"
+1%
+#63
+1#

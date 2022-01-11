@@ -1,0 +1,1 @@
+install iverilog and gtkwave

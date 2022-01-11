@@ -1,0 +1,150 @@
+iverilog -o pipelined_machine_exe -Wall mips_defines.v modules.v rom.v mux_lib.v pipelined_machine.v pipelined_machine_tb.v
+Running with test flushing
+./pipelined_machine_exe
+VCD info: dumpfile pm.vcd opened for output.
+At time                    0, reset = 1 pc = xxxxxxxX, inst = xxxxxxxx
+At time                    2, reset = 1 pc = 00400000, inst = 00000000
+At time                    7, reset = 0 pc = 00400000, inst = 00000000
+At time                   10, reset = 0 pc = 00400004, inst = 8e820000
+At time                   14, reset = 0 pc = 00400008, inst = 8e830004
+At time                   18, reset = 0 pc = 0040000c, inst = 8e840008
+At time                   22, reset = 0 pc = 00400010, inst = 8e85000c
+At time                   26, reset = 0 pc = 00400014, inst = 8e860010
+At time                   30, reset = 0 pc = 00400018, inst = 00423820
+At time                   34, reset = 0 pc = 0040001c, inst = 00834020
+At time                   38, reset = 0 pc = 00400020, inst = 00a04822
+At time                   42, reset = 0 pc = 00400024, inst = 00835024
+At time                   46, reset = 0 pc = 00400028, inst = 11250002
+At time                   50, reset = 0 pc = 00400030, inst = 00000000
+At time                   54, reset = 0 pc = 00400034, inst = 00a65825
+At time                   58, reset = 0 pc = 00400038, inst = 00e8602a
+At time                   62, reset = 0 pc = 0040003c, inst = 00a66824
+At time                   66, reset = 0 pc = 00400040, inst = 11800002
+At time                   70, reset = 0 pc = 00400044, inst = ae8c0004
+At time                   74, reset = 0 pc = 00400048, inst = 8e8d0004
+At time                   78, reset = 0 pc = 0040004c, inst = 00c57022
+At time                   82, reset = 0 pc = 00400050, inst = 010c7825
+At time                   86, reset = 0 pc = 00400054, inst = 00000000
+At time                   90, reset = 0 pc = 00400058, inst = 00000000
+At time                   94, reset = 0 pc = 0040005c, inst = 00000000
+At time                   98, reset = 0 pc = 00400060, inst = 00000000
+At time                  102, reset = 0 pc = 00400064, inst = 00000000
+At time                  106, reset = 0 pc = 00400068, inst = 00000000
+At time                  110, reset = 0 pc = 0040006c, inst = 00000000
+At time                  114, reset = 0 pc = 00400070, inst = 00000000
+At time                  118, reset = 0 pc = 00400074, inst = 00000000
+At time                  122, reset = 0 pc = 00400078, inst = 00000000
+At time                  126, reset = 0 pc = 0040007c, inst = 00000000
+At time                  130, reset = 0 pc = 00400080, inst = 00000000
+At time                  134, reset = 0 pc = 00400084, inst = 00000000
+At time                  138, reset = 0 pc = 00400088, inst = 00000000
+At time                  142, reset = 0 pc = 0040008c, inst = 00000000
+At time                  146, reset = 0 pc = 00400090, inst = 00000000
+At time                  150, reset = 0 pc = 00400094, inst = 00000000
+At time                  154, reset = 0 pc = 00400098, inst = 00000000
+At time                  158, reset = 0 pc = 0040009c, inst = 00000000
+At time                  162, reset = 0 pc = 004000a0, inst = 00000000
+At time                  166, reset = 0 pc = 004000a4, inst = 00000000
+At time                  170, reset = 0 pc = 004000a8, inst = 00000000
+At time                  174, reset = 0 pc = 004000ac, inst = 00000000
+At time                  178, reset = 0 pc = 004000b0, inst = 00000000
+At time                  182, reset = 0 pc = 004000b4, inst = 00000000
+At time                  186, reset = 0 pc = 004000b8, inst = 00000000
+At time                  190, reset = 0 pc = 004000bc, inst = 00000000
+At time                  194, reset = 0 pc = 004000c0, inst = 00000000
+At time                  198, reset = 0 pc = 004000c4, inst = 00000000
+At time                  202, reset = 0 pc = 004000c8, inst = 00000000
+At time                  206, reset = 0 pc = 004000cc, inst = 00000000
+At time                  210, reset = 0 pc = 004000d0, inst = 00000000
+At time                  214, reset = 0 pc = 004000d4, inst = 00000000
+At time                  218, reset = 0 pc = 004000d8, inst = 00000000
+At time                  222, reset = 0 pc = 004000dc, inst = 00000000
+At time                  226, reset = 0 pc = 004000e0, inst = 00000000
+At time                  230, reset = 0 pc = 004000e4, inst = 00000000
+At time                  234, reset = 0 pc = 004000e8, inst = 00000000
+At time                  238, reset = 0 pc = 004000ec, inst = 00000000
+At time                  242, reset = 0 pc = 004000f0, inst = 00000000
+At time                  246, reset = 0 pc = 004000f4, inst = 00000000
+At time                  250, reset = 0 pc = 004000f8, inst = 00000000
+At time                  254, reset = 0 pc = 004000fc, inst = 00000000
+At time                  258, reset = 0 pc = 00400100, inst = 00000000
+At time                  262, reset = 0 pc = 00400104, inst = 00000000
+At time                  266, reset = 0 pc = 00400108, inst = 00000000
+At time                  270, reset = 0 pc = 0040010c, inst = 00000000
+At time                  274, reset = 0 pc = 00400110, inst = 00000000
+At time                  278, reset = 0 pc = 00400114, inst = 00000000
+At time                  282, reset = 0 pc = 00400118, inst = 00000000
+At time                  286, reset = 0 pc = 0040011c, inst = 00000000
+At time                  290, reset = 0 pc = 00400120, inst = 00000000
+At time                  294, reset = 0 pc = 00400124, inst = 00000000
+At time                  298, reset = 0 pc = 00400128, inst = 00000000
+At time                  302, reset = 0 pc = 0040012c, inst = 00000000
+At time                  306, reset = 0 pc = 00400130, inst = 00000000
+At time                  310, reset = 0 pc = 00400134, inst = 00000000
+At time                  314, reset = 0 pc = 00400138, inst = 00000000
+At time                  318, reset = 0 pc = 0040013c, inst = 00000000
+At time                  322, reset = 0 pc = 00400140, inst = 00000000
+At time                  326, reset = 0 pc = 00400144, inst = 00000000
+At time                  330, reset = 0 pc = 00400148, inst = 00000000
+At time                  334, reset = 0 pc = 0040014c, inst = 00000000
+At time                  338, reset = 0 pc = 00400150, inst = 00000000
+At time                  342, reset = 0 pc = 00400154, inst = 00000000
+At time                  346, reset = 0 pc = 00400158, inst = 00000000
+At time                  350, reset = 0 pc = 0040015c, inst = 00000000
+At time                  354, reset = 0 pc = 00400160, inst = 00000000
+At time                  358, reset = 0 pc = 00400164, inst = 00000000
+At time                  362, reset = 0 pc = 00400168, inst = 00000000
+At time                  366, reset = 0 pc = 0040016c, inst = 00000000
+At time                  370, reset = 0 pc = 00400170, inst = 00000000
+At time                  374, reset = 0 pc = 00400174, inst = 00000000
+At time                  378, reset = 0 pc = 00400178, inst = 00000000
+At time                  382, reset = 0 pc = 0040017c, inst = 00000000
+At time                  386, reset = 0 pc = 00400180, inst = 00000000
+At time                  390, reset = 0 pc = 00400184, inst = 00000000
+At time                  394, reset = 0 pc = 00400188, inst = 00000000
+At time                  398, reset = 0 pc = 0040018c, inst = 00000000
+At time                  402, reset = 0 pc = 00400190, inst = 00000000
+At time                  406, reset = 0 pc = 00400194, inst = 00000000
+Dumping register state: 
+  Register :  hex-value (  dec-value )
+          0: 0x00000000 (          0 )
+          1: 0x10010000 (  268500992 )
+          2: 0x00000001 (          1 )
+          3: 0x000000ff (        255 )
+          4: 0x00000400 (       1024 )
+          5: 0x00000064 (        100 )
+          6: 0x000000c8 (        200 )
+          7: 0x00000002 (          2 )
+          8: 0x000004ff (       1279 )
+          9: 0x00000064 (        100 )
+         10: 0x00000000 (          0 )
+         11: 0x000000ec (        236 )
+         12: 0x00000001 (          1 )
+         13: 0x00000001 (          1 )
+         14: 0x00000064 (        100 )
+         15: 0x000004ff (       1279 )
+         16: 0x10010000 (  268500992 )
+         17: 0x10010000 (  268500992 )
+         18: 0x10010000 (  268500992 )
+         19: 0x10010000 (  268500992 )
+         20: 0x10010000 (  268500992 )
+         21: 0x10010000 (  268500992 )
+         22: 0x10010000 (  268500992 )
+         23: 0x10010000 (  268500992 )
+         24: 0x10010000 (  268500992 )
+         25: 0x10010000 (  268500992 )
+         26: 0x10010000 (  268500992 )
+         27: 0x10010000 (  268500992 )
+         28: 0x10010000 (  268500992 )
+         29: 0x10010000 (  268500992 )
+         30: 0x10010000 (  268500992 )
+         31: 0x10010000 (  268500992 )
+
+Dumping memory state: 
+   Address :  hex-value (  dec-value )
+ 0x10010000: 0x00000001 (          1 )
+ 0x10010004: 0x00000001 (          1 )
+ 0x10010008: 0x00000400 (       1024 )
+ 0x1001000c: 0x00000064 (        100 )
+ 0x10010010: 0x000000c8 (        200 )
+Done.  Simulation ending.

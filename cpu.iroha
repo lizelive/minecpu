@@ -1,0 +1,277 @@
+; Generated from iroha-0.0.1
+; See https://github.com/nlsynth/iroha
+
+; 
+; (REGISTER id name storage-type (type width) initial)
+; (RESOURCE id class (input-types) (output-types) (params) (array))
+; (INSN id res res-id (opr) (target-st) (inputs) (outputs) (deps) (conditions))
+
+(PARAMS
+ (RESET-POLARITY true))
+(PLATFORM default
+  (DEF
+    (COND (AND))
+    (VALUE (DELAY 1))))
+(ARRAY-IMAGE 1 ()
+ (0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0))
+(MODULE 1 main
+  (PARAMS)
+  (TABLE 1 $thr_main
+    (REGISTERS
+      (REGISTER 3 anon_3
+        CONST (UINT 32) 0
+      )
+      (REGISTER 4 anon_4
+        CONST (UINT 32) 2
+      )
+      (REGISTER 7 anon_7
+        CONST (UINT 32) 3
+      )
+      (REGISTER 8 anon_8
+        CONST (UINT 32) 5
+      )
+      (REGISTER 11 anon_11
+        CONST (UINT 32) 6
+      )
+      (REGISTER 12 anon_12
+        CONST (UINT 32) 8
+      )
+      (REGISTER 15 anon_15
+        CONST (UINT 32) 9
+      )
+      (REGISTER 16 anon_16
+        CONST (UINT 32) 9
+      )
+      (REGISTER 19 anon_19
+        CONST (UINT 32) 10
+      )
+      (REGISTER 20 anon_20
+        CONST (UINT 32) 13
+      )
+      (REGISTER 21 anon_21
+        CONST (UINT 32) 0
+      )
+      (REGISTER 22 anon_22
+        CONST (UINT 32) 1
+      )
+      (REGISTER 23 anon_23
+        CONST (UINT 32) 1
+      )
+      (REGISTER 24 anon_24
+        CONST (UINT 32) 2
+      )
+      (REGISTER 25 anon_25
+        CONST (UINT 32) 3
+      )
+      (REGISTER 26 main_op_4_26
+        REG (UINT 16) ()
+      )
+      (REGISTER 27 main_3_25
+        REG (UINT 16) ()
+      )
+      (REGISTER 29 m_pc_1_23
+        REG (UINT 4) 0
+      )
+      (REGISTER 30 main_pc_2_24
+        REG (UINT 4) ()
+      )
+      (REGISTER 31 main_5_27
+        REG (UINT 3) ()
+      )
+      (REGISTER 32 main_source_6_28
+        REG (UINT 3) ()
+      )
+      (REGISTER 33 main_7_29
+        REG (UINT 3) ()
+      )
+      (REGISTER 34 main_operation_8_30
+        REG (UINT 3) ()
+      )
+      (REGISTER 35 main_9_31
+        REG (UINT 3) ()
+      )
+      (REGISTER 36 main_output_dest_10_32
+        REG (UINT 3) ()
+      )
+      (REGISTER 37 main_11_33
+        REG (UINT 1) ()
+      )
+      (REGISTER 38 main_flow_12_34
+        REG (UINT 1) ()
+      )
+      (REGISTER 39 main_13_35
+        REG (UINT 4) ()
+      )
+      (REGISTER 40 main_jump_14_36
+        REG (UINT 4) ()
+      )
+      (REGISTER 41 main_src_value_15_37
+        REG (UINT 8) ()
+      )
+      (REGISTER 42 main_16_38
+        REG (UINT 0) ()
+      )
+      (REGISTER 43 main_17_39
+        REG (UINT 0) ()
+      )
+      (REGISTER 44 m_acc_18_40
+        REG (UINT 8) 0
+      )
+      (REGISTER 45 main_acc_19_41
+        REG (UINT 8) ()
+      )
+      (REGISTER 46 main_20_42
+        REG (UINT 0) ()
+      )
+      (REGISTER 47 m_bak_21_43
+        REG (UINT 8) 0
+      )
+      (REGISTER 48 main_bak_22_44
+        REG (UINT 8) ()
+      )
+      (REGISTER 1 main_pc_2_24_w0i4
+        WIRE (UINT 4) ()
+      )
+      (REGISTER 2 main_3_25_w0i10
+        WIRE (UINT 16) ()
+      )
+      (REGISTER 5 main_op_4_26_w0i12
+        WIRE (UINT 16) ()
+      )
+      (REGISTER 6 main_5_27_w0i16
+        WIRE (UINT 3) ()
+      )
+      (REGISTER 9 main_source_6_28_w0i18
+        WIRE (UINT 3) ()
+      )
+      (REGISTER 10 main_7_29_w0i22
+        WIRE (UINT 3) ()
+      )
+      (REGISTER 13 main_9_31_w0i28
+        WIRE (UINT 3) ()
+      )
+      (REGISTER 14 main_11_33_w0i34
+        WIRE (UINT 1) ()
+      )
+      (REGISTER 17 main_13_35_w0i40
+        WIRE (UINT 4) ()
+      )
+      (REGISTER 18 main_16_38_w0i48
+        WIRE (UINT 0) ()
+      )
+      (REGISTER 28 main_17_39_w0i56
+        WIRE (UINT 0) ()
+      )
+      (REGISTER 49 main_acc_19_41_w0i61
+        WIRE (UINT 8) ()
+      )
+      (REGISTER 50 main_20_42_w0i66
+        WIRE (UINT 0) ()
+      )
+      (REGISTER 51 main_bak_22_44_w0i71
+        WIRE (UINT 8) ()
+      )
+    )
+    (RESOURCES
+      (RESOURCE 1 tr
+        () ()
+        (PARAMS)
+      )
+      (RESOURCE 3 set
+        () ()
+        (PARAMS)
+      )
+      (RESOURCE 4 array
+        () ()
+        (PARAMS)
+        (ARRAY 4 (UINT 16) INTERNAL RAM 1)
+      )
+      (RESOURCE 5 bit-sel
+        () ()
+        (PARAMS)
+      )
+      (RESOURCE 6 eq
+        ((UINT 3) (UINT 3)) ((UINT 0))
+        (PARAMS)
+      )
+      (RESOURCE 7 print
+        () ()
+        (PARAMS)
+      )
+    )
+    (INITIAL 1)
+    (STATE 1
+      (PROFILE 1 16)
+      (INSN 1 tr 1 () (4) () () () ())
+      (INSN 4 set 3 () () (29) (1) () ())
+      (INSN 8 array 4 (sram_read_address) () (1) () () ())
+      (INSN 45 set 3 () () (21) (41) () ())
+      (INSN 2 set 3 () () (1) (30) () ())
+    )
+    (STATE 4
+      (PROFILE 1 16)
+      (INSN 51 tr 1 () (39 37) (18) () () ())
+      (INSN 10 array 4 (sram_read_data) () () (2) () ())
+      (INSN 12 set 3 () () (2) (5) () ())
+      (INSN 16 bit-sel 5 () () (5 3 4) (6) () ())
+      (INSN 18 set 3 () () (6) (9) () ())
+      (INSN 22 bit-sel 5 () () (5 7 8) (10) () ())
+      (INSN 24 set 3 () () (10) (34) () ())
+      (INSN 28 bit-sel 5 () () (5 11 12) (13) () ())
+      (INSN 30 set 3 () () (13) (36) () ())
+      (INSN 34 bit-sel 5 () () (5 15 16) (14) () ())
+      (INSN 36 set 3 () () (14) (38) () ())
+      (INSN 40 bit-sel 5 () () (5 19 20) (17) () ())
+      (INSN 42 set 3 () () (17) (40) () ())
+      (INSN 48 eq 6 () () (9 22) (18) () ())
+      (INSN 3 set 3 () () (2) (27) () ())
+      (INSN 5 set 3 () () (5) (26) () ())
+      (INSN 6 set 3 () () (6) (31) () ())
+      (INSN 7 set 3 () () (9) (32) () ())
+      (INSN 9 set 3 () () (10) (33) () ())
+      (INSN 11 set 3 () () (13) (35) () ())
+      (INSN 13 set 3 () () (14) (37) () ())
+      (INSN 14 set 3 () () (17) (39) () ())
+      (INSN 15 set 3 () () (18) (42) () ())
+    )
+    (STATE 37
+      (PROFILE 1 16)
+      (INSN 54 tr 1 () (39) () () () ())
+      (INSN 53 set 3 () () (23) (41) () ())
+    )
+    (STATE 39
+      (PROFILE 1 16)
+      (INSN 59 tr 1 () (46 43) (28) () () ())
+      (INSN 56 eq 6 () () (32 24) (28) () ())
+      (INSN 17 set 3 () () (28) (43) () ())
+    )
+    (STATE 43
+      (PROFILE 1 16)
+      (INSN 64 tr 1 () (46) () () () ())
+      (INSN 61 set 3 () () (44) (49) () ())
+      (INSN 63 set 3 () () (49) (41) () ())
+      (INSN 19 set 3 () () (49) (45) () ())
+    )
+    (STATE 46
+      (PROFILE 1 16)
+      (INSN 69 tr 1 () (53 50) (50) () () ())
+      (INSN 66 eq 6 () () (32 25) (50) () ())
+      (INSN 20 set 3 () () (50) (46) () ())
+    )
+    (STATE 50
+      (PROFILE 1 16)
+      (INSN 74 tr 1 () (53) () () () ())
+      (INSN 71 set 3 () () (47) (51) () ())
+      (INSN 73 set 3 () () (51) (41) () ())
+      (INSN 21 set 3 () () (51) (48) () ())
+    )
+    (STATE 53
+      (PROFILE 1 16)
+      (INSN 77 tr 1 () (57) () () () ())
+      (INSN 76 print 7 () () (26) () () ())
+    )
+    (STATE 57
+      (PROFILE 1 16)
+    )
+  )
+)
