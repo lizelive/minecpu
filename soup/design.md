@@ -66,8 +66,10 @@ port4 is ram data 2
 ```
 //load the port 1
 p2 max reg->acc 
-p4 sub acc->acc  p3 co
+// compare the registers
+p4 sub acc->acc p3 co
 
+// if co
 p2 add 1 into acc
 ```
 

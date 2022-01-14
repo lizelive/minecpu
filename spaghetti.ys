@@ -1,0 +1,8 @@
+read_liberty -lib redstone.lib;
+read_verilog -sv spaghetti.sv;
+hierarchy -check -auto-top;
+proc; opt; fsm; opt; memory; opt;
+techmap; opt; dfflibmap -liberty redstone.lib;
+abc -liberty redstone.lib;
+clean; write_blif spaghetti.blif;
+show -format dot -viewer true -prefix yosy_show.

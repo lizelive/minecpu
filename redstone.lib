@@ -10,6 +10,24 @@ library(redstone) {
     }
   }  
 
+  /* 2-input inverting MUX */
+  cell (mux2) {
+    area : 20;
+    pin(A) {
+      direction : input;
+    }
+    pin(B) {
+      direction : input;
+    }
+    pin(S) {
+      direction : input;
+    } 
+    pin(Y) {
+      direction: output;
+      function : "(A * S) + (B * S')";
+    }
+  }
+
   cell(and) {
     area: 12
     pin(A) {
@@ -25,7 +43,7 @@ library(redstone) {
   }
 
   cell(not) {
-    area: 2
+    area: 8
     pin(A) {
       direction: input;
     }
@@ -49,7 +67,7 @@ library(redstone) {
     }
   }
 
-  cell(xor2) {
+  cell(xor) {
     area : 24;
     pin(A) {
       direction : input;
@@ -63,7 +81,7 @@ library(redstone) {
     }
   }
 
-  cell(xnor2) {
+  cell(xnor) {
     area : 60;
     pin(A) {
       direction : input;
@@ -78,7 +96,7 @@ library(redstone) {
   }
 
 
-  cell(DFF) {
+  cell(d_flip_flop) {
     area: 12
     ff(IQ, IQN) {
       clocked_on: C;
