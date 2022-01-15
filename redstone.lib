@@ -28,7 +28,7 @@ library(redstone) {
     }
   }
 
-  cell(and) {
+  cell(and2) {
     area: 12
     pin(A) {
       direction: input;
@@ -53,7 +53,7 @@ library(redstone) {
     }
   }
 
-  cell(nand) {
+  cell(nand2) {
     area: 24
     pin(A) {
       direction: input;
@@ -67,7 +67,86 @@ library(redstone) {
     }
   }
 
-  cell(xor) {
+/* Latch */
+  cell(latch) {
+    area : 5;
+    latch ("IQ","IQN") {
+      enable : "G";
+      data_in : "D";
+    }
+
+    pin(D) {
+      direction : input;
+    }
+    pin(G) {
+      direction : input;
+    }
+ 
+    pin(Q) {
+      direction : output;
+      function : "IQ";
+      internal_node : "Q";
+      
+      timing() {
+        timing_type : rising_edge;
+        intrinsic_rise : 65;
+        intrinsic_fall : 65;
+        rise_resistance : 0;
+        fall_resistance : 0;
+        related_pin : "G";
+      }
+      
+      timing() {
+        timing_sense : positive_unate;
+        intrinsic_rise : 65;
+        intrinsic_fall : 65;
+        rise_resistance : 0;
+        fall_resistance : 0;
+        related_pin : "D";
+      }
+    }
+    
+    pin(QN) {
+      direction : output;
+      function : "IQN";
+      internal_node : "QN";
+      
+      timing() {
+        timing_type : rising_edge;
+        intrinsic_rise : 65;
+        intrinsic_fall : 65;
+        rise_resistance : 0;
+        fall_resistance : 0;
+        related_pin : "G";
+      }
+      
+      timing() {
+        timing_sense : negative_unate;
+        intrinsic_rise : 65;
+        intrinsic_fall : 65;
+        rise_resistance : 0;
+        fall_resistance : 0;
+        related_pin : "D";
+      }
+    }
+  }
+
+  /* 2-input NOR gate */
+  cell (nor2) {
+    area : 3;
+    pin(A) {
+      direction : input;
+    }
+    pin(B) {
+      direction : input;
+    }
+    pin(Y) {
+      direction: output;
+      function : "(A + B)'";
+    }
+  }
+
+  cell(xor2) {
     area : 24;
     pin(A) {
       direction : input;
@@ -81,7 +160,7 @@ library(redstone) {
     }
   }
 
-  cell(xnor) {
+  cell(xnor2) {
     area : 60;
     pin(A) {
       direction : input;
@@ -115,4 +194,44 @@ library(redstone) {
     }
   }
 
+  /* half adder */
+  cell (halfadder) {
+    area : 5;
+    pin(A) {
+      direction : input;
+    }
+    pin(B) {
+      direction : input;
+    }
+    pin(C) {
+      direction : output;
+      function  : "(A * B)";
+    }    
+    pin(Y) {
+      direction: output;
+      function : "(A *B') + (A' * B)";
+    }    
+  }
+
+  /* full adder */
+  cell (fulladder) {
+    area : 8;
+    pin(A) {
+      direction : input;
+    }
+    pin(B) {
+      direction : input;
+    }
+    pin(CI) {
+      direction : input;
+    }    
+    pin(CO) {
+      direction : output;
+      function : "(((A * B)+(B * CI))+(CI * A))";
+    }
+    pin(Y) {
+      direction: output;
+      function : "((A^B)^CI)";
+    }    
+  }
 }

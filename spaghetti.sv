@@ -1,11 +1,11 @@
 // a functional version
 `define ROM_SIZE 8
 `define WORD_SIZE 8
-typedef bit [7:0] word;
+typedef bit [`WORD_SIZE-1:0] word;
 
-typedef enum  { OP_ADD, OP_SUB, OP_XOR } alu_op;
+typedef enum bit [1:0]  { OP_ADD, OP_SUB, OP_XOR } alu_op;
 
-typedef enum { WB_NON, WB_ACC, WB_ANS,  } writeback;
+typedef enum bit [1:0] { WB_NON, WB_ACC, WB_ANS, WB_REG  } writeback;
 
 typedef struct packed {
     bit exec_if_flag;
@@ -31,13 +31,14 @@ endmodule
 
 
 module port (
+    input clk,
     input word a_data_in, b_data_in,
-    input a_write, a_read, b_write, b_read,
-    output word a_data_out, b_data_out
+    input bit a_write, a_read, b_write, b_read,
+    output bit read_start, write_finish,
+    output word a_data_out, b_data_out,
 );
-assign a_data_out= a_data_in;
-assign b_data_out = b_data_in;
-
+    assign a_data_out= a_data_in;
+    assign b_data_out = b_data_in;
 endmodule
 
 module alu (
@@ -65,15 +66,23 @@ module alu (
     //endcase
 endmodule
 
-// module cpu (
-//     input clk
-// );
-//     reg flag;
-//     reg step = clk;
+module cpu (
+    input clk
+);
+    reg flag;
+    reg step = clk;
 
-//     word acc;
-//     rom rom(.clk(step), .out(current_instruction));
-//     instruction next_instruction;
-//     instruction current_instruction;
-    
-// endmodule
+    bit read_ready;
+    bit stall = !read_ready;
+    word acc;
+    rom rom(.clk(step), .out(current_instruction));
+    instruction last_instruction;
+    instruction current_instruction;
+    always @(posedge clk ) begin
+        last_instruction = current_instruction;
+        case (current_instruction.wb_reg)
+             : 
+            default: 
+        endcase
+    end
+endmodule
