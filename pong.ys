@@ -1,0 +1,10 @@
+read_liberty -lib redstone.lib;
+read_verilog -sv pong.sv;
+show -format dot -viewer true -prefix pong_block
+hierarchy -check -auto-top;
+proc; opt; fsm; opt; memory; opt;
+techmap; opt;
+# dfflibmap;
+abc;
+clean; write_blif pong.blif;
+show -format dot -viewer true -prefix pong_gates

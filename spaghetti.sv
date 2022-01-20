@@ -120,7 +120,9 @@ module alu (
 endmodule
 
 module cpu (
-    input clk
+    input clk,
+    input io_bus i1, i2, i3, i4,
+    output io_bus i1, i2, i3, i4,
 );
     reg flag;
 
