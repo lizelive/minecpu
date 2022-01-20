@@ -33,68 +33,75 @@ module bouncer (
     output signed [3:0] out_vel
 );
     wire signed [7:0] new_pos = in_pos + in_vel;
-    assign bounce = new_pos >> 6 != 0;
+    assign bounce = in_pos >> 6 != 0;
     assign out_vel = bounce ? -in_vel : in_vel;
     assign out_pos = bounce ? in_pos: new_pos;
 endmodule
 
+module paddle (
+    input signed [1:0] in_control,
+    input signed [7:0] in_pos,
+    output signed [7:0] out_pos
+);
+    wire signed [3:0] in_vel = 4 * in_control_1;
+    bouncer bouncer_paddle(
+        .in_pos(in_pos),
+        .in_vel(in_vel),
+        .out_pos(out_pos)
+    );
+endmodule
+
 module pong (
     input clk, reset,
-    input signed [1:0] in_p1, in_p2,
-    output reg [3:0] score_p1, score_p2,
-    output reg signed [7:0] paddle_p1, paddle_p2,
-  	output reg signed [7:0] ball_pos_x, ball_pos_y,
+    input signed [1:0] in_control_1, in_control_2,
+    input signed [7:0] in_paddle_1_pos, in_paddle_2_pos,
+    output signed [7:0] out_paddle_1_pos, out_paddle_2_pos,
+    input [3:0] in_score_p1, in_score_p2,
+    input [3:0] in_ball_vel_y, in_ball_vel_x,
+    output [3:0] out_score_p1, out_score_p2,
+  	input signed [7:0] in_ball_pos_x, in_ball_pos_y,
+    output signed [7:0] out_ball_pos_x, out_ball_pos_y,
+    output wire bounce
 );
+    wire signed [7:0] bounce_ball_pos_x, bounce_ball_pos_y;
+    wire signed [3:0] bounce_ball_vel_x, bounce_ball_vel_y;
+
+    paddle paddle1(
+        .in_control(in_control_1),
+        .in_pos(in_paddle_1_pos),
+        .out_pos(out_paddle_1_pos)
+        );
+
     bouncer bouncer_ball_y(
-            .in_pos,
-            .in_vel,
-            .bounce,
-            .out_pos,
-            .out_vel
-    )
-    reg signed [3:0] ball_vel_x;
-    reg signed [3:0] ball_vel_y;
-    reg reset_ball = 0;
+        .in_pos(in_ball_pos_y),
+        .in_vel(in_ball_vel_y),
+        .bounce(bounce_ball_y),
+        .out_pos(bounce_ball_pos_y),
+        .out_vel(bounce_ball_vel_y)
+    );
+    
+    bouncer bouncer_ball_x(
+        .in_pos(in_ball_pos_x),
+        .in_vel(in_ball_vel_x),
+        .bounce(bounce_ball_x),
+        .out_pos(bounce_ball_pos_x),
+        .out_vel(bounce_ball_vel_x)
+    );
+    
+    assign bounce = bounce_ball_y | bounce_ball_x;
 
-    reg [7:0] ball_pos_next_y;
-    always @(posedge clk ) begin
-        if (reset) begin
-            score_p1 = 0;
-            score_p2 = 0;
-            paddle_p1 = 0;
-            paddle_p2 = 0;
-            reset_ball = 1;
-        end
+    wire near_paddle_1 = in_ball_pos_x < 0;
+    wire [7:0] near_paddle_pos = near_paddle_1 ? in_paddle_1_pos : in_paddle_2_pos;
+    wire ball_diff_paddle = in_ball_pos_y - near_paddle_pos;
+    wire ball_bounce_paddle = ball_diff_paddle / 4 == 0;
+    
+    wire gutter_ball = bounce_ball_x && ! ball_bounce_paddle; 
+    assign out_score_p1 = gutter_ball && !near_paddle_1 ? in_score_p1 + 1 : in_score_p1;
+    assign out_score_p2 = gutter_ball && near_paddle_1 ? in_score_p2 + 1 : in_score_p2;
 
-        if (ball_pos_x > PLAY_SIZE) begin
-            score_p1 = score_p1 + 1;
-            reset_ball = 1;
-        end else if (ball_pos_x < -PLAY_SIZE) begin
-            score_p2 = score_p2 + 1;
-            reset_ball = 1;
-        end else begin
-            ball_pos_x <= ball_pos_x + ball_vel_x;
-        end
-        
-        paddle_p1 <= paddle_p1 + in_p1;
-        paddle_p2 <= paddle_p2 + in_p2;
-
-        if (reset_ball) begin
-            ball_pos_x = 0;
-            ball_pos_y = 0;
-            ball_vel_x = 1;
-            ball_vel_y = 1;
-        end else begin
-            // move the ball in y direction
-            // assert the velocity is less then 20
-            ball_pos_next_y = ball_pos_y + ball_vel_y;
-            if (ball_pos_next_y >=  PLAY_SIZE || ball_pos_next_y <= -PLAY_SIZE) begin
-                ball_vel_y = - ball_vel_y;
-            end else begin
-                ball_pos_y = ball_pos_next_y;
-            end
-        end
-    end
+    assign out_ball_pos_x = gutter_ball ? 0 : bounce_ball_pos_x;
+    assign out_ball_pos_y = gutter_ball ? 0 : bounce_ball_pos_y;
+    
 endmodule
 
 // module bouncer_tb ();
