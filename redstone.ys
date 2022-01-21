@@ -1,6 +1,0 @@
-read_verilog redtest.sv;
-hierarchy -check -auto-top;
-proc; opt; fsm; opt; memory; opt;
-techmap; opt; dfflibmap -liberty redstone.lib;
-abc -liberty redstone.lib;
-clean; write_blif redstone.blif

@@ -1,6 +1,6 @@
 library(redstone) {
   time_unit: 100ms;
-  cell(buffer) {
+  cell(repeater) {
     area : 2;
     pin(A) {
       direction : input;
@@ -11,7 +11,7 @@ library(redstone) {
     }
   }  
 
-  cell(not) {
+  cell(torch) {
     area: 2
     pin(A) {
       direction: input;
@@ -19,6 +19,14 @@ library(redstone) {
     pin(Y) {
       function: "A'";
       direction: output;
+      timing() {
+        timing_type : rising_edge;
+        intrinsic_rise : 1;
+        intrinsic_fall : 1;
+        rise_resistance : 0;
+        fall_resistance : 0;
+        related_pin : "A";
+      }
     }
   }
 
@@ -52,30 +60,6 @@ library(redstone) {
       
       timing() {
         timing_sense : positive_unate;
-        intrinsic_rise : 1;
-        intrinsic_fall : 1;
-        rise_resistance : 0;
-        fall_resistance : 0;
-        related_pin : "D";
-      }
-    }
-    
-    pin(QN) {
-      direction : output;
-      function : "IQN";
-      internal_node : "QN";
-      
-      timing() {
-        timing_type : rising_edge;
-        intrinsic_rise : 1;
-        intrinsic_fall : 1;
-        rise_resistance : 0;
-        fall_resistance : 0;
-        related_pin : "G";
-      }
-      
-      timing() {
-        timing_sense : negative_unate;
         intrinsic_rise : 1;
         intrinsic_fall : 1;
         rise_resistance : 0;

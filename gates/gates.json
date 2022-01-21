@@ -1,0 +1,14 @@
+[
+    {
+        "name" : "repeater",
+        "logic" : "Y = A",
+        "size" : [1, 2, 1],
+        "delay" : 1
+    },
+    {
+        "name" : "torch",
+        "logic" : "Y = A'",
+        "size" : [1, 2, 1],
+        "delay" : 1
+    }
+]

@@ -24,6 +24,13 @@ endmodule
 
 `define PLAY_SIZE 64
 
+module abs (
+    input signed [7:0] x,
+    output signed [7:0] y,
+);
+    assign y = x >= 0 ? x : -x;
+    //assign y = $max(x, -x);
+endmodule
 
 module bouncer (
     input signed [7:0] in_pos,
@@ -32,10 +39,18 @@ module bouncer (
     output signed [7:0] out_pos,
     output signed [3:0] out_vel
 );
-    wire signed [7:0] new_pos = in_pos + in_vel;
-    assign bounce = in_pos >> 6 != 0;
-    assign out_vel = bounce ? -in_vel : in_vel;
-    assign out_pos = bounce ? in_pos: new_pos;
+    wire signed [7:0] new_pos= in_pos + in_vel;
+    wire sign = in_pos>=0;
+    wire new_sign = new_pos>=0;
+    assign bounce = sign != new_sign;
+
+    wire [7:0] near_bound = sign ? 1 : -1;
+
+    wire vel_sign = in_vel >= 0;
+
+    //assign bounce = in_pos >> 6 != 0;
+    assign out_vel = bounce && (sign == vel_sign)  ? -in_vel: in_vel;
+    assign out_pos = bounce ? near_bound: new_pos;
 endmodule
 
 module paddle (
@@ -66,6 +81,8 @@ module pong (
     wire signed [7:0] bounce_ball_pos_x, bounce_ball_pos_y;
     wire signed [3:0] bounce_ball_vel_x, bounce_ball_vel_y;
 
+    // \$_MUX_ pm(in_paddle_1_pos, in_paddle_2_pos, reset, out_paddle_2_pos);
+    
     paddle paddle1(
         .in_control(in_control_1),
         .in_pos(in_paddle_1_pos),
