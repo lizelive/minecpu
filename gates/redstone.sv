@@ -14,21 +14,21 @@ module repeater #(
   input latch,
   output redstone out
 );
-  byte time_sense_on = 0;
+  byte time_sense_on;
+  reg should_output;
 
   buf #(1,delay,delay) b(out, state);
 
   initial begin
-    time_sense_on = in? 0 : delay;
-    should_output = in;
+    time_sense_on = delay;
+    should_output = 0;
   end
   
   assign out = should_output ? -1: 0;
 
-  reg should_output;
 
   always @($global_clock) begin
-    should_output = time_sense_on < delay
+    should_output = time_sense_on < delay;
     if (in != 0)
       time_sense_on = 0;
     else if (should_output)
@@ -44,7 +44,7 @@ module torch (
 
   reg old_in = 0;
   reg [59:0] changes = 0;
-  reg byte numchanges = 0;
+  reg [5:0] numchanges = 0;
 
   wire not_in = in == 0;
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 
 INPUT=$1
+TOP=${2:-$(basename -s .sv $INPUT)}
+LIBRARY=${3:-"gates/redstone_raw.lib"}
 
-LIBRARY="redstone.lib"
-TOP=$(basename -s .sv $INPUT)
 
 rm -rf out/
 mkdir out
@@ -17,9 +17,9 @@ flatten;
 # generic synthesis
 synth -top $TOP -flatten;
 
-dfflibmap -liberty mycells.lib
-abc -liberty mycells.lib
-clean
+dfflibmap -liberty $LIBRARY;
+abc -liberty $LIBRARY;
+clean;
 
 write_verilog synth.v;
 
