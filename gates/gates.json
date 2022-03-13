@@ -1,14 +1,134 @@
 [
     {
-        "name" : "repeater",
-        "logic" : "Y = A",
-        "size" : [1, 2, 1],
-        "delay" : 1
+        "name": "repeater_latch",
+        "logic": "Y = latch(A, L)",
+        "delay": 1,
+        "inputs": {
+            "A": [
+                -1,
+                1,
+                0
+            ],
+            "L": [
+                0,
+                1,
+                2
+            ]
+        },
+        "outputs": {
+            "Y": [
+                1,
+                1,
+                0
+            ]
+        },
+        "blocks": [
+            {
+                "pos": [
+                    0,
+                    0,
+                    0
+                ],
+                "block": "glassblock"
+            },
+            {
+                "pos": [
+                    0,
+                    1,
+                    0
+                ],
+                "block": "repeater[delay=1,facing=east]"
+            },
+            {
+                "pos": [
+                    0,
+                    0,
+                    1
+                ],
+                "block": "glassblock"
+            },
+            {
+                "pos": [
+                    0,
+                    1,
+                    1
+                ],
+                "block": "repeater[delay=1,facing=north]"
+            }
+        ]
     },
     {
-        "name" : "torch",
-        "logic" : "Y = A'",
-        "size" : [1, 2, 1],
-        "delay" : 1
+        "name": "repeater",
+        "logic": "Y = A",
+        "delay": 1,
+        "inputs": {
+            "A": [
+                -1,
+                1,
+                0
+            ]
+        },
+        "outputs": {
+            "Y": [
+                1,
+                1,
+                0
+            ]
+        },
+        "blocks": [
+            {
+                "pos": [
+                    0,
+                    0,
+                    0
+                ],
+                "block": "glassblock"
+            },
+            {
+                "pos": [
+                    0,
+                    1,
+                    0
+                ],
+                "block": "repeater[delay=1,facing=east]"
+            }
+        ]
+    },
+    {
+        "name": "torch",
+        "logic": "Y = A'",
+        "delay": 1,
+        "inputs": {
+            "A": [
+                -1,
+                0,
+                0
+            ]
+        },
+        "outputs": {
+            "Y": [
+                1,
+                0,
+                0
+            ]
+        },
+        "blocks": [
+            {
+                "pos": [
+                    0,
+                    0,
+                    0
+                ],
+                "block": "target"
+            },
+            {
+                "pos": [
+                    1,
+                    0,
+                    0
+                ],
+                "block": "redstone_wall_torch[facing=east]"
+            }
+        ]
     }
 ]

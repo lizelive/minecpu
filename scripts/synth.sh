@@ -2,7 +2,7 @@
 
 INPUT=$1
 TOP=${2:-$(basename -s .sv $INPUT)}
-LIBRARY=${3:-"gates/redstone_raw.lib"}
+LIBRARY=${3:-"gates/redstone_std.lib"}
 
 
 rm -rf out/

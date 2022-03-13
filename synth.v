@@ -29,6 +29,19 @@ module repeater(in, latch, out);
   wire _21_;
   wire _22_;
   wire _23_;
+  wire _24_;
+  wire _25_;
+  wire _26_;
+  wire _27_;
+  wire _28_;
+  wire _29_;
+  wire _30_;
+  wire _31_;
+  wire _32_;
+  wire _33_;
+  wire _34_;
+  wire _35_;
+  wire _36_;
   (* src = "gates/redstone.sv:13.18-13.20" *)
   (* wiretype = "\\redstone" *)
   input [3:0] in;
@@ -45,230 +58,273 @@ module repeater(in, latch, out);
   (* init = 8'h01 *)
   (* src = "gates/redstone.sv:17.8-17.21" *)
   wire [7:0] time_sense_on;
-  \Y=!A  _24_ (
-    .A(time_sense_on[6]),
+  inv _37_ (
+    .A(time_sense_on[3]),
     .Y(_02_)
   );
-  \Y=!A  _25_ (
-    .A(time_sense_on[5]),
+  inv _38_ (
+    .A(time_sense_on[7]),
     .Y(_03_)
   );
-  \Y=!A  _26_ (
-    .A(time_sense_on[7]),
+  inv _39_ (
+    .A(time_sense_on[0]),
     .Y(_04_)
   );
-  \Y=!A  _27_ (
-    .A(time_sense_on[0]),
+  nor2 _40_ (
+    .A(time_sense_on[2]),
+    .B(time_sense_on[1]),
     .Y(_05_)
   );
-  \Y=!(A+B+C)  _28_ (
-    .A(time_sense_on[2]),
-    .B(time_sense_on[1]),
-    .C(time_sense_on[0]),
+  nand2 _41_ (
+    .A(_04_),
+    .B(_05_),
     .Y(_06_)
   );
-  \Y=!(A+B+C+D)  _29_ (
+  nor2 _42_ (
     .A(time_sense_on[6]),
     .B(time_sense_on[5]),
-    .C(time_sense_on[4]),
-    .D(time_sense_on[3]),
     .Y(_07_)
   );
-  \Y=(A&B)+!C  _30_ (
-    .A(_06_),
-    .B(_07_),
-    .C(_04_),
-    .Y(_00_)
-  );
-  \Y=(A&B)+!(C&D)  _31_ (
-    .A(_06_),
-    .B(_07_),
-    .C(_04_),
-    .D(_05_),
-    .Y(_08_)
-  );
-  \Y=!(A+B+C+D)  _32_ (
-    .A(in[1]),
-    .B(in[0]),
-    .C(in[3]),
-    .D(in[2]),
-    .Y(_09_)
-  );
-  \Y=!(!(A&B)+(C&D))  _33_ (
-    .A(_08_),
-    .B(_09_),
-    .C(time_sense_on[7]),
-    .D(time_sense_on[0]),
-    .Y(_01_[0])
-  );
-  \Y=A&B&C  _34_ (
-    .A(time_sense_on[1]),
-    .B(time_sense_on[7]),
-    .C(time_sense_on[0]),
-    .Y(_10_)
-  );
-  \Y=(A&B)+C  _35_ (
-    .A(time_sense_on[7]),
-    .B(time_sense_on[0]),
-    .C(time_sense_on[1]),
-    .Y(_11_)
-  );
-  \Y=!(A&B)  _36_ (
-    .A(_09_),
-    .B(_11_),
-    .Y(_12_)
-  );
-  \Y=!(A+B)  _37_ (
-    .A(_10_),
-    .B(_12_),
-    .Y(_01_[1])
-  );
-  \Y=A&B  _38_ (
-    .A(time_sense_on[2]),
-    .B(time_sense_on[0]),
-    .Y(_13_)
-  );
-  \Y=A&B  _39_ (
-    .A(time_sense_on[1]),
-    .B(_13_),
-    .Y(_14_)
-  );
-  \Y=!(!(A&B)+!(C&D))  _40_ (
-    .A(time_sense_on[2]),
-    .B(time_sense_on[1]),
-    .C(time_sense_on[7]),
-    .D(time_sense_on[0]),
-    .Y(_15_)
-  );
-  \Y=!((A+B)&C)  _41_ (
-    .A(time_sense_on[2]),
-    .B(_10_),
-    .C(_09_),
-    .Y(_16_)
-  );
-  \Y=!(A+B)  _42_ (
-    .A(_15_),
-    .B(_16_),
-    .Y(_01_[2])
-  );
-  \Y=A&B  _43_ (
-    .A(time_sense_on[3]),
-    .B(_15_),
-    .Y(_17_)
-  );
-  \Y=!((A+B)&C)  _44_ (
-    .A(time_sense_on[3]),
-    .B(_15_),
-    .C(_09_),
-    .Y(_18_)
-  );
-  \Y=!(A+B)  _45_ (
-    .A(_17_),
-    .B(_18_),
-    .Y(_01_[3])
-  );
-  \Y=!(A&B&C)  _46_ (
+  nor2 _43_ (
     .A(time_sense_on[4]),
     .B(time_sense_on[3]),
+    .Y(_08_)
+  );
+  nand2 _44_ (
+    .A(_07_),
+    .B(_08_),
+    .Y(_09_)
+  );
+  oai211 _45_ (
+    .A(_06_),
+    .B(_09_),
+    .C(_03_),
+    .Y(_00_)
+  );
+  nor2 _46_ (
+    .A(_03_),
+    .B(_04_),
+    .Y(_10_)
+  );
+  nor2 _47_ (
+    .A(in[1]),
+    .B(in[0]),
+    .Y(_11_)
+  );
+  inv _48_ (
+    .A(_11_),
+    .Y(_12_)
+  );
+  nor2 _49_ (
+    .A(in[3]),
+    .B(in[2]),
+    .Y(_13_)
+  );
+  inv _50_ (
+    .A(_13_),
+    .Y(_14_)
+  );
+  nor2 _51_ (
+    .A(_12_),
+    .B(_14_),
+    .Y(_15_)
+  );
+  oai211 _52_ (
+    .A(time_sense_on[0]),
+    .B(_00_),
     .C(_15_),
+    .Y(_16_)
+  );
+  nor2 _53_ (
+    .A(_10_),
+    .B(_16_),
+    .Y(_01_[0])
+  );
+  oai211 _54_ (
+    .A(time_sense_on[1]),
+    .B(_10_),
+    .C(_15_),
+    .Y(_17_)
+  );
+  aoi211 _55_ (
+    .A(time_sense_on[1]),
+    .B(_10_),
+    .C(_17_),
+    .Y(_01_[1])
+  );
+  aoi211 _56_ (
+    .A(time_sense_on[1]),
+    .B(_10_),
+    .C(time_sense_on[2]),
+    .Y(_18_)
+  );
+  nand2 _57_ (
+    .A(time_sense_on[2]),
+    .B(time_sense_on[1]),
     .Y(_19_)
   );
-  \Y=(A&B)+C  _47_ (
-    .A(time_sense_on[3]),
-    .B(_15_),
-    .C(time_sense_on[4]),
+  nor2 _58_ (
+    .A(_04_),
+    .B(_19_),
     .Y(_20_)
   );
-  \Y=A&B&C  _48_ (
-    .A(_09_),
-    .B(_19_),
-    .C(_20_),
-    .Y(_01_[4])
-  );
-  \Y=!(A&B&C&D)  _49_ (
-    .A(time_sense_on[5]),
-    .B(time_sense_on[4]),
-    .C(time_sense_on[3]),
-    .D(_15_),
+  nand2 _59_ (
+    .A(_00_),
+    .B(_20_),
     .Y(_21_)
   );
-  \Y=!(!(A&B)+(C&D))  _50_ (
-    .A(_09_),
-    .B(_21_),
-    .C(_19_),
-    .D(_03_),
-    .Y(_01_[5])
-  );
-  \Y=!(!(A&B)+!(C&D))  _51_ (
-    .A(time_sense_on[6]),
-    .B(time_sense_on[5]),
-    .C(time_sense_on[4]),
-    .D(time_sense_on[3]),
+  inv _60_ (
+    .A(_21_),
     .Y(_22_)
   );
-  \Y=!(A&B&C&D)  _52_ (
-    .A(time_sense_on[1]),
-    .B(time_sense_on[7]),
-    .C(_13_),
-    .D(_22_),
+  nand2 _61_ (
+    .A(_15_),
+    .B(_21_),
     .Y(_23_)
   );
-  \Y=!(!(A&B)+(C&D))  _53_ (
-    .A(_09_),
+  nor2 _62_ (
+    .A(_18_),
     .B(_23_),
-    .C(_21_),
-    .D(_02_),
+    .Y(_01_[2])
+  );
+  nor2 _63_ (
+    .A(_02_),
+    .B(_21_),
+    .Y(_24_)
+  );
+  oai211 _64_ (
+    .A(time_sense_on[3]),
+    .B(_22_),
+    .C(_15_),
+    .Y(_25_)
+  );
+  nor2 _65_ (
+    .A(_24_),
+    .B(_25_),
+    .Y(_01_[3])
+  );
+  oai211 _66_ (
+    .A(time_sense_on[4]),
+    .B(_24_),
+    .C(_15_),
+    .Y(_26_)
+  );
+  aoi211 _67_ (
+    .A(time_sense_on[4]),
+    .B(_24_),
+    .C(_26_),
+    .Y(_01_[4])
+  );
+  aoi211 _68_ (
+    .A(time_sense_on[4]),
+    .B(_24_),
+    .C(time_sense_on[5]),
+    .Y(_27_)
+  );
+  nand2 _69_ (
+    .A(time_sense_on[5]),
+    .B(time_sense_on[4]),
+    .Y(_28_)
+  );
+  inv _70_ (
+    .A(_28_),
+    .Y(_29_)
+  );
+  nand2 _71_ (
+    .A(time_sense_on[3]),
+    .B(_29_),
+    .Y(_30_)
+  );
+  nor2 _72_ (
+    .A(_21_),
+    .B(_30_),
+    .Y(_31_)
+  );
+  oai211 _73_ (
+    .A(_21_),
+    .B(_30_),
+    .C(_15_),
+    .Y(_32_)
+  );
+  nor2 _74_ (
+    .A(_27_),
+    .B(_32_),
+    .Y(_01_[5])
+  );
+  nand2 _75_ (
+    .A(time_sense_on[6]),
+    .B(_20_),
+    .Y(_33_)
+  );
+  nor2 _76_ (
+    .A(_30_),
+    .B(_33_),
+    .Y(_34_)
+  );
+  oai211 _77_ (
+    .A(time_sense_on[6]),
+    .B(_31_),
+    .C(_15_),
+    .Y(_35_)
+  );
+  aoi211 _78_ (
+    .A(_00_),
+    .B(_34_),
+    .C(_35_),
     .Y(_01_[6])
   );
-  \Y=!(!(A&B)+(C&D))  _54_ (
+  nand2 _79_ (
     .A(time_sense_on[7]),
-    .B(_09_),
-    .C(_14_),
-    .D(_22_),
+    .B(_15_),
+    .Y(_36_)
+  );
+  nor2 _80_ (
+    .A(_34_),
+    .B(_36_),
     .Y(_01_[7])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _55_ (
+  \$_FF_  _81_ (
     .D(_00_),
     .Q(should_output)
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _56_ (
+  \$_FF_  _82_ (
     .D(_01_[0]),
     .Q(time_sense_on[0])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _57_ (
+  \$_FF_  _83_ (
     .D(_01_[1]),
     .Q(time_sense_on[1])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _58_ (
+  \$_FF_  _84_ (
     .D(_01_[2]),
     .Q(time_sense_on[2])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _59_ (
+  \$_FF_  _85_ (
     .D(_01_[3]),
     .Q(time_sense_on[3])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _60_ (
+  \$_FF_  _86_ (
     .D(_01_[4]),
     .Q(time_sense_on[4])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _61_ (
+  \$_FF_  _87_ (
     .D(_01_[5]),
     .Q(time_sense_on[5])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _62_ (
+  \$_FF_  _88_ (
     .D(_01_[6]),
     .Q(time_sense_on[6])
   );
   (* src = "gates/redstone.sv:30.3-37.6" *)
-  \$_FF_  _63_ (
+  \$_FF_  _89_ (
     .D(_01_[7]),
     .Q(time_sense_on[7])
   );

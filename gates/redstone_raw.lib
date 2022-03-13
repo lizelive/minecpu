@@ -13,7 +13,7 @@ library(redstone) {
     }
   }  
   
-  cell("Y=A+B") {
+  cell("Y=(A+B)'") {
     area: 12;
     pin(A) { direction: input; }
     pin(B) { direction: input; }
